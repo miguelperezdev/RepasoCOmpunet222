@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Definición de los repositorios -->
+    <bean id="deviceRepository" class="edu.co.icesi.repository.DeviceRepository" init-method="init"/>
+
+    <bean id="measurementRepository" class="edu.co.icesi.repository.MeasurementRepository" init-method="init"/>
+
+    <!-- Definición del servicio con inyección de dependencias -->
+    <bean id="deviceService" class="edu.co.icesi.service.DeviceService">
+        <property name="deviceRepository" ref="deviceRepository"/>
+        <property name="measurementRepository" ref="measurementRepository"/>
+    </bean>
+</beans>
